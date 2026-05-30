@@ -1,0 +1,141 @@
+:root {
+  --navy: #0f2744;
+  --gold: #c9a96e;
+  --cream: #f8f5ef;
+  --text: #4d4d4d;
+  --white: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #f8f5ef, #ffffff);
+  font-family: "Lato", sans-serif;
+  padding: 20px;
+}
+
+.thank-you-card {
+  max-width: 700px;
+  width: 100%;
+  background: #fff;
+  padding: 60px 50px;
+  text-align: center;
+  border-top: 5px solid var(--gold);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+}
+
+.success-icon {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 30px;
+  border-radius: 50%;
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 42px;
+}
+
+.company-name {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+h1 {
+  font-family: "Playfair Display", serif;
+  color: var(--navy);
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+.message {
+  color: var(--text);
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 35px;
+}
+
+.info-box {
+  background: var(--cream);
+  padding: 25px;
+  margin-bottom: 35px;
+  border-left: 4px solid var(--gold);
+}
+
+.info-box p {
+  color: var(--text);
+  line-height: 1.8;
+}
+
+/* .btn-home {
+  display: inline-block;
+  background: var(--navy);
+  color: #fff;
+  text-decoration: none;
+  padding: 15px 35px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: 0.3s;
+}
+
+.btn-home:hover {
+  background: var(--gold);
+  color: var(--navy);
+} */
+
+.btn-home {
+  display: inline-block;
+  background: var(--navy);
+  color: #fff;
+  text-decoration: none;
+  padding: 15px 35px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.btn-home:hover {
+  background: var(--gold);
+  color: var(--navy);
+  transform: translateY(-2px);
+}
+
+.contact-details {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.contact-details p {
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+  .thank-you-card {
+    padding: 40px 25px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  .message {
+    font-size: 16px;
+  }
+}
