@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // Successful dispatch -> Redirect to the thank you page
-      window.location.href = "html/thank-you.html";
+      window.location.href = "CA-Gautam-Jaiswal/html/thank-you.html";
 
     } catch (error) {
       // alert(`Submission failed: ${error.message}`);
