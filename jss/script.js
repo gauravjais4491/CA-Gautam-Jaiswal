@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // Successful dispatch -> Redirect to the thank you page
-      window.location.href = "/thank-you.html";
+      window.location.href = "../thank-you.html";
 
     } catch (error) {
       // alert(`Submission failed: ${error.message}`);
