@@ -8,6 +8,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const countryCodeInput = document.getElementById("countryCode");
   const submitBtn = document.querySelector(".form-submit");
 
+  window.addEventListener("pageshow", function (event) {
+    if (event.persisted) {
+      // Page was loaded from bfcache (back button on mobile)
+      // Force a fresh reload to clear form data
+      window.location.reload();
+    }
+  });
   // 2. Guard Clause: Safely exit if the form elements are missing on the current page
   if (!form || !nameInput || !phoneInput || !emailInput || !messageInput || !submitBtn) {
     return;
