@@ -91,9 +91,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // Successful dispatch -> Redirect to the thank you page
-      window.location.href = "/CA-Gautam-Jaiswal/thank-you.html";
+      // window.location.href = "/CA-Gautam-Jaiswal/thank-you.html";
 
       // window.location.href = "/thank-you.html";
+      const base = window.location.pathname.replace(/\/[^/]*$/, "/");
+      window.location.href = base + "html/thank-you.html";
 
     } catch (error) {
       // alert(`Submission failed: ${error.message}`);
