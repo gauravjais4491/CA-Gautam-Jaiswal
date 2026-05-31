@@ -68,6 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
       messageInput.focus();
       return;
     }
+
     submitBtn.disabled = true;
     submitBtn.textContent = "Submitting...";
 
@@ -90,15 +91,14 @@ document.addEventListener("DOMContentLoaded", () => {
         throw new Error(`Submission failed: ${response.status}`);
       }
 
-      // Successful dispatch -> Redirect to the thank you page
-      // window.location.href = "/CA-Gautam-Jaiswal/thank-you.html";
+      // Clear all form fields before leaving the page
+      form.reset();
 
-      // window.location.href = "/thank-you.html";
+      // Redirect to thank you page
       const base = window.location.pathname.replace(/\/[^/]*$/, "/");
       window.location.href = base + "html/thank-you.html";
 
     } catch (error) {
-      // alert(`Submission failed: ${error.message}`);
       console.error("Submission Failure:", error);
       alert("Oops! Something went wrong while submitting your enquiry. Please try again later.");
     } finally {
