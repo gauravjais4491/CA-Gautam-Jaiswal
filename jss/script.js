@@ -91,7 +91,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // Successful dispatch -> Redirect to the thank you page
-      window.location.href = "/CA-Gautam-Jaiswal/thank-you.html";
+      // window.location.href = "/CA-Gautam-Jaiswal/thank-you.html";
+
+      window.location.href = "/thank-you.html";
 
     } catch (error) {
       // alert(`Submission failed: ${error.message}`);
@@ -102,5 +104,26 @@ document.addEventListener("DOMContentLoaded", () => {
       submitBtn.disabled = false;
       submitBtn.textContent = "Submit Enquiry →";
     }
+  });
+
+
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+
+  // Toggle menu open/close
+  hamburgerBtn.addEventListener('click', function () {
+    hamburgerBtn.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+    hamburgerBtn.setAttribute('aria-expanded', mobileMenu.classList.contains('open'));
+  });
+
+  // Close menu when a link is clicked
+  mobileLinks.forEach(function (link) {
+    link.addEventListener('click', function () {
+      hamburgerBtn.classList.remove('active');
+      mobileMenu.classList.remove('open');
+      hamburgerBtn.setAttribute('aria-expanded', 'false');
+    });
   });
 });

@@ -1,15 +1,24 @@
 /* ==========================================
   TABLETS
 ========================================== */
-
 @media (max-width: 1024px) {
   .hero-inner {
     grid-template-columns: 1fr;
+    padding: 100px 32px 60px;
+    gap: 48px;
   }
 
   .hero-card {
     max-width: 380px;
     margin: 0 auto;
+  }
+
+  .hero-title {
+    font-size: clamp(32px, 5vw, 50px);
+  }
+
+  .hero-subtitle {
+    max-width: 100%;
   }
 
   .about-grid,
@@ -52,7 +61,6 @@
 /* ==========================================
   MOBILE
 ========================================== */
-
 @media (max-width: 768px) {
   .contact-grid {
     grid-template-columns: 1fr;
@@ -76,12 +84,88 @@
 /* ==========================================
   SMALL MOBILE
 ========================================== */
-
 @media (max-width: 680px) {
+  /* NAV */
   .nav-links {
     display: none;
   }
+  .desktop-cta {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
 
+  /* HERO */
+  .hero-inner {
+    padding: 90px 20px 50px;
+    gap: 36px;
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+  }
+
+  .hero-title {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+
+  .hero-subtitle {
+    font-size: 15px;
+    margin-bottom: 28px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    text-align: center;
+    padding: 14px 24px;
+  }
+
+  .hero-stats {
+    gap: 0;
+    justify-content: space-between;
+    margin-top: 36px;
+    padding-top: 28px;
+  }
+
+  .stat-num {
+    font-size: 26px;
+  }
+
+  .stat-label {
+    font-size: 10px;
+  }
+
+  .hero-card {
+    max-width: 100%;
+    padding: 24px;
+  }
+
+  .hero-card-photo {
+    max-height: 280px;
+    width: auto;
+    margin: 0 auto 20px;
+  }
+
+  .hero-card-name {
+    font-size: 18px;
+  }
+
+  .cred-badge {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+
+  /* GRIDS */
   .services-grid,
   .why-grid,
   .icai-points,
@@ -105,5 +189,26 @@
 
   .icai-box {
     flex-direction: column;
+  }
+}
+
+/* ==========================================
+  VERY SMALL
+========================================== */
+@media (max-width: 400px) {
+  .hero-title {
+    font-size: 28px;
+  }
+
+  .hero-card-photo {
+    max-height: 220px;
+  }
+
+  .hero-stats {
+    gap: 0;
+  }
+
+  .stat-num {
+    font-size: 22px;
   }
 }
