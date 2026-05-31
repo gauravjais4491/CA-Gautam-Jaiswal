@@ -708,9 +708,7 @@ section {
   font-weight: 800;
   z-index: 0;
   line-height: 1;
-}
-
-/* PARTNERS */
+}/* PARTNERS */
 .partners {
   background: var(--navy);
 }
@@ -747,7 +745,7 @@ section {
   width: 160px;
   height: 200px;
   object-fit: cover;
-  object-position: center top;
+  object-position: center center;
   display: block;
 }
 .partner-photo-placeholder {
@@ -823,7 +821,6 @@ section {
   color: var(--gold);
   font-weight: 700;
 }
-
 /* ICAI COMPLIANCE */
 .icai {
   background: var(--cream);
