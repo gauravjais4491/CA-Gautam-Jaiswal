@@ -292,3 +292,58 @@
     font-size: 18px;
   }
 }
+
+/* ==========================================
+  DESKTOP MODE ON MOBILE  1025px – 1200px
+========================================== */
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .hero {
+    min-height: auto;
+    align-items: flex-start;
+  }
+  .hero-inner {
+    grid-template-columns: 1fr 320px;
+    gap: 48px;
+    padding: 100px 24px 60px;
+  }
+  .hero-title {
+    font-size: 42px;
+  }
+  .hero-subtitle {
+    font-size: 15px;
+  }
+  .hero-card {
+    padding: 24px;
+  }
+  .hero-card-photo {
+    aspect-ratio: 3/4;
+    object-position: center center;
+  }
+  .section-inner {
+    padding: 80px 24px;
+  }
+  .nav-inner {
+    padding: 0 24px;
+  }
+}
+
+/* ==========================================
+  LARGE DESKTOP  > 1200px
+========================================== */
+@media (min-width: 1201px) {
+  .hero {
+    align-items: center;
+  }
+  .hero-inner {
+    grid-template-columns: 1fr 380px;
+    gap: 80px;
+    padding: 120px 32px 80px;
+  }
+  .hero-card {
+    padding: 40px;
+  }
+  .hero-card-photo {
+    aspect-ratio: 3/4;
+    object-position: center center;
+  }
+}
