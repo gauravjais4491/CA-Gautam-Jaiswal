@@ -23,6 +23,12 @@
     letter-spacing: 1.5px;
   }
 
+  /* HERO — key fix for empty space */
+  .hero {
+    min-height: auto;
+    padding-bottom: 60px;
+  }
+
   .hero-inner {
     grid-template-columns: 1fr;
     padding: 100px 32px 60px;
@@ -126,6 +132,10 @@
   }
 
   /* HERO */
+  .hero {
+    min-height: auto;
+    padding-bottom: 0;
+  }
   .hero-inner {
     padding: 90px 20px 50px;
     gap: 36px;
@@ -332,6 +342,7 @@
 ========================================== */
 @media (min-width: 1201px) {
   .hero {
+    min-height: 100svh;
     align-items: center;
   }
   .hero-inner {
