@@ -1,5 +1,6 @@
 /* ==========================================
-  TABLETS
+  TABLETS  769px – 1024px
+  Keep 2-column hero, just tighten it
 ========================================== */
 @media (max-width: 1024px) {
   /* NAV */
@@ -23,26 +24,38 @@
     letter-spacing: 1.5px;
   }
 
-  /* HERO — key fix for empty space */
+  /* HERO */
   .hero {
     min-height: auto;
     padding-bottom: 60px;
   }
-
   .hero-inner {
-    grid-template-columns: 1fr;
-    padding: 100px 32px 60px;
-    gap: 48px;
-  }
-  .hero-card {
-    max-width: 380px;
-    margin: 0 auto;
+    grid-template-columns: 1fr 300px;
+    gap: 40px;
+    padding: 100px 24px 60px;
   }
   .hero-title {
-    font-size: clamp(32px, 5vw, 50px);
+    font-size: clamp(28px, 4vw, 46px);
   }
   .hero-subtitle {
+    font-size: 15px;
     max-width: 100%;
+  }
+  .hero-actions {
+    flex-wrap: nowrap;
+  }
+  .btn-primary,
+  .btn-secondary {
+    padding: 14px 20px;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+  .hero-card {
+    padding: 24px;
+  }
+  .hero-card-photo {
+    aspect-ratio: 3/4;
+    object-position: center center;
   }
 
   .about-grid,
@@ -87,9 +100,38 @@
 }
 
 /* ==========================================
-  MOBILE
+  TABLET PORTRAIT — stack hero here
 ========================================== */
 @media (max-width: 768px) {
+  /* HERO */
+  .hero {
+    min-height: auto;
+    padding-bottom: 0;
+  }
+  .hero-inner {
+    grid-template-columns: 1fr;
+    padding: 100px 24px 60px;
+    gap: 40px;
+  }
+  .hero-actions {
+    flex-wrap: nowrap;
+  }
+  .btn-primary,
+  .btn-secondary {
+    padding: 13px 16px;
+    font-size: 10px;
+    white-space: nowrap;
+  }
+  .hero-card {
+    max-width: 360px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+  .hero-card-photo {
+    aspect-ratio: 3/4;
+    object-position: center center;
+  }
+
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -154,14 +196,19 @@
     margin-bottom: 28px;
   }
   .hero-actions {
-    flex-direction: column;
-    gap: 12px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 10px;
   }
   .btn-primary,
   .btn-secondary {
-    width: 100%;
+    width: auto;
+    flex: 1;
     text-align: center;
-    padding: 14px 24px;
+    padding: 13px 12px;
+    font-size: 10px;
+    white-space: nowrap;
+    letter-spacing: 1px;
   }
   .hero-stats {
     gap: 0;
@@ -183,6 +230,7 @@
     max-height: 280px;
     width: auto;
     margin: 0 auto 20px;
+    aspect-ratio: unset;
   }
   .hero-card-name {
     font-size: 18px;
@@ -273,6 +321,19 @@
   .hero-title {
     font-size: 28px;
   }
+  .hero-actions {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+  .btn-primary,
+  .btn-secondary {
+    flex: 1;
+    padding: 12px 8px;
+    font-size: 9px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
   .hero-card-photo {
     max-height: 220px;
   }
@@ -304,49 +365,15 @@
 }
 
 /* ==========================================
-  DESKTOP MODE ON MOBILE  1025px – 1200px
+  LARGE DESKTOP  > 1024px
 ========================================== */
-@media (min-width: 1025px) and (max-width: 1200px) {
-  .hero {
-    min-height: auto;
-    align-items: flex-start;
-  }
-  .hero-inner {
-    grid-template-columns: 1fr 320px;
-    gap: 48px;
-    padding: 100px 24px 60px;
-  }
-  .hero-title {
-    font-size: 42px;
-  }
-  .hero-subtitle {
-    font-size: 15px;
-  }
-  .hero-card {
-    padding: 24px;
-  }
-  .hero-card-photo {
-    aspect-ratio: 3/4;
-    object-position: center center;
-  }
-  .section-inner {
-    padding: 80px 24px;
-  }
-  .nav-inner {
-    padding: 0 24px;
-  }
-}
-
-/* ==========================================
-  LARGE DESKTOP  > 1200px
-========================================== */
-@media (min-width: 1201px) {
+@media (min-width: 1025px) {
   .hero {
     min-height: 100svh;
     align-items: center;
   }
   .hero-inner {
-    grid-template-columns: 1fr 380px;
+    grid-template-columns: 1fr 400px;
     gap: 80px;
     padding: 120px 32px 80px;
   }
