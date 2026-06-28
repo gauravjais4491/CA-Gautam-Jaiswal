@@ -64,6 +64,21 @@
     grid-template-columns: 1fr;
     gap: 40px;
   }
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    background: transparent;
+    gap: 2px;
+  }
+
+  .service-card {
+    border: 1px solid var(--border);
+  }
+
+  .services-grid .service-card:nth-child(9) {
+    grid-column: 1 / 2;
+    border-right: 1px solid var(--border);
+  }
   .services-grid,
   .why-grid {
     grid-template-columns: repeat(2, 1fr);
