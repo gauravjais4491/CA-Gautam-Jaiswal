@@ -1,0 +1,96 @@
+/* ============================================================
+   RESOURCES.CSS — resources.html only
+   Knowledge centre article cards
+   ============================================================ */
+
+.resources-section {
+  background: var(--navy-dark);
+}
+.resources-section .section-title {
+  color: var(--white);
+}
+.resources-section .section-sub {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.res-card {
+  display: block;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(201, 168, 76, 0.17);
+  border-radius: 12px;
+  padding: 1.75rem 1.65rem;
+  transition:
+    border-color 0.25s,
+    background 0.25s,
+    transform 0.2s;
+}
+.res-card:hover {
+  border-color: rgba(201, 168, 76, 0.5);
+  background: rgba(201, 168, 76, 0.06);
+  transform: translateY(-3px);
+}
+.res-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+.res-cat {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(201, 168, 76, 0.12);
+  padding: 3px 9px;
+  border-radius: 4px;
+}
+.res-date {
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.38);
+}
+.res-title {
+  font-family: "Playfair Display", serif;
+  font-size: 17px;
+  color: var(--white);
+  line-height: 1.35;
+  margin-bottom: 0.8rem;
+}
+.res-excerpt {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.52);
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+}
+.res-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+}
+.res-arrow {
+  transition: transform 0.2s;
+}
+.res-card:hover .res-arrow {
+  transform: translateX(5px);
+}
+
+@media (max-width: 860px) {
+  .resources-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 620px) {
+  .resources-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,361 @@
+/* ============================================================
+   HOME.CSS — index.html only
+   Hero, ticker, featured services, why GJA, CTA
+   ============================================================ */
+
+/* ── Ticker ─────────────────────────────────────────────────── */
+.ticker-wrap {
+  background: var(--gold);
+  height: 36px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  margin-top: 68px;
+}
+.ticker-track {
+  display: flex;
+  white-space: nowrap;
+  animation: ticker 35s linear infinite;
+  will-change: transform;
+}
+.ticker-item {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--navy-dark);
+  padding: 0 2.5rem;
+}
+.ticker-item::after {
+  content: "◆";
+  font-size: 7px;
+  opacity: 0.45;
+}
+@keyframes ticker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ── Hero ────────────────────────────────────────────────────── */
+.hero {
+  min-height: calc(100vh - 104px);
+  background: var(--navy-dark);
+  display: flex;
+  align-items: center;
+  padding: 5rem 5%;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -30%;
+  right: -8%;
+  width: 650px;
+  height: 650px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(201, 168, 76, 0.09) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--border-gold);
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 4rem;
+  align-items: center;
+  max-width: 1180px;
+  margin: 0 auto;
+  width: 100%;
+}
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(201, 168, 76, 0.12);
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  border-radius: 24px;
+  padding: 6px 14px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+  margin-bottom: 1.5rem;
+}
+.hero-tag-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: blink 2.2s ease-in-out infinite;
+}
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.75);
+  }
+}
+.hero h1 {
+  font-size: clamp(30px, 4vw, 52px);
+  color: var(--white);
+  line-height: 1.17;
+  margin-bottom: 1.5rem;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+.hero-sub {
+  font-size: 15.5px;
+  color: rgba(255, 255, 255, 0.62);
+  line-height: 1.75;
+  max-width: 490px;
+  margin-bottom: 2.5rem;
+}
+.hero-btns {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+.hero-stats {
+  display: flex;
+}
+.hero-stat {
+  padding-right: 2rem;
+}
+.hero-stat + .hero-stat {
+  padding-left: 2rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+}
+.stat-num {
+  font-family: "Playfair Display", serif;
+  font-size: 26px;
+  color: var(--gold);
+  font-weight: 700;
+  line-height: 1;
+}
+.stat-label {
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: 4px;
+}
+.hero-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-gold);
+  border-radius: 14px;
+  padding: 2rem 1.75rem;
+  backdrop-filter: blur(8px);
+}
+.hero-card-title {
+  font-family: "Playfair Display", serif;
+  font-size: 17px;
+  color: var(--white);
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.hero-service {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.72);
+}
+.hero-service:last-child {
+  border-bottom: none;
+}
+.hs-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+/* ── Featured Services ───────────────────────────────────────── */
+.featured-services {
+  background: var(--white);
+}
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+.svc-card {
+  border: 1px solid var(--border-navy);
+  border-radius: 10px;
+  padding: 1.75rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition:
+    border-color 0.25s,
+    box-shadow 0.25s,
+    transform 0.2s;
+}
+.svc-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+.svc-card:hover {
+  border-color: rgba(201, 168, 76, 0.5);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+.svc-card:hover::after {
+  width: 100%;
+}
+.svc-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  background: rgba(201, 168, 76, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+  margin-bottom: 1.1rem;
+}
+.svc-title {
+  font-family: "Playfair Display", serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--navy-dark);
+  margin-bottom: 0.55rem;
+}
+.svc-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+.svc-tag {
+  display: inline-block;
+  margin-top: 0.85rem;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  background: rgba(201, 168, 76, 0.1);
+  padding: 3px 9px;
+  border-radius: 4px;
+}
+.view-all {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+/* ── Why GJA ─────────────────────────────────────────────────── */
+.why {
+  background: var(--navy-dark);
+}
+.why .section-title {
+  color: var(--white);
+}
+.why .section-sub {
+  color: rgba(255, 255, 255, 0.55);
+}
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+.why-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(201, 168, 76, 0.18);
+  border-radius: 10px;
+  padding: 2rem 1.5rem;
+  transition:
+    background 0.25s,
+    border-color 0.25s;
+}
+.why-card:hover {
+  background: rgba(201, 168, 76, 0.07);
+  border-color: rgba(201, 168, 76, 0.35);
+}
+.why-num {
+  font-family: "Playfair Display", serif;
+  font-size: 38px;
+  color: rgba(201, 168, 76, 0.2);
+  line-height: 1;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+.why-title {
+  font-family: "Playfair Display", serif;
+  font-size: 17px;
+  color: var(--white);
+  margin-bottom: 0.75rem;
+}
+.why-body {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.52);
+  line-height: 1.65;
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-right {
+    display: none;
+  }
+  .featured-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .why-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 620px) {
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-btns {
+    flex-direction: column;
+  }
+  .btn-gold,
+  .btn-ghost {
+    width: 100%;
+    justify-content: center;
+  }
+  .hero-stats {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
