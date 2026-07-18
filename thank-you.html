@@ -1,22 +1,28 @@
 <!doctype html>
 <html lang="en-IN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="noindex, follow" />
-    <title>Thank You | Gautam Jaiswal & Associates</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@300;400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/thank-you.css" />
-    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
-    <meta name="theme-color" content="#0F1E3C" />
-  </head>
 
-  <body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, follow" />
+  <title>Thank You | Gautam Jaiswal & Associates</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <!-- global.css first (base + nav/footer), then page-specific overrides -->
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/thank-you.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <meta name="theme-color" content="#0F1E3C" />
+</head>
+
+<body id="top">
+  <div id="navbar"></div>
+
+  <section class="thank-you-section">
     <div class="thank-you-card">
       <div class="success-icon">&#10003;</div>
 
@@ -46,12 +52,20 @@
         <p><strong>&#128205;</strong> Pune, Maharashtra, India</p>
       </div>
     </div>
+  </section>
 
-    <script>
-      // Replace the history entry so the back button doesn't re-trigger the form submit.
-      if (window.history.replaceState) {
-        window.history.replaceState(null, "", window.location.href);
-      }
-    </script>
-  </body>
+  <div id="footer"></div>
+  <div id="whatsapp"></div>
+  <div id="backTopContainer"></div>
+
+  <script src="js/layout.js" defer></script>
+  <script src="js/global.js" defer></script>
+  <script>
+    // Replace the history entry so the back button doesn't re-trigger the form submit.
+    if (window.history.replaceState) {
+      window.history.replaceState(null, "", window.location.href);
+    }
+  </script>
+</body>
+
 </html>

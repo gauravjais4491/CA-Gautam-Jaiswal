@@ -6,7 +6,7 @@
 
 /* ── Variables ─────────────────────────────────────────────── */
 :root {
-  --navy-dark: #0f1e3c;
+  --navy-dark: #0a1628;
   --navy: #1a2a4a;
   --navy-mid: #243552;
   --navy-light: #2e4269;
@@ -197,7 +197,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 0 5%;
-  background: rgba(15, 30, 60, 0.97);
+  background: rgba(10, 22, 40, 0.97);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border-gold);
@@ -336,7 +336,11 @@ nav.scrolled {
 
 /* ── Page Hero (inner pages) ───────────────────────────────── */
 .page-hero {
-  background: var(--navy-dark);
+  background-color: var(--navy-dark);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 55px 55px;
   padding: 7rem 5% 4rem;
   margin-top: 68px;
   position: relative;

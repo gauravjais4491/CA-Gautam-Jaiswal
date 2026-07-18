@@ -1,6 +1,6 @@
 /* ============================================================
    CONTACT.JS — contact.html only
-   Form validation, spam honeypot, Formspree submit, thank-you redirect
+   Form validation, Formspree submit, thank-you redirect
    ============================================================ */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
     service: document.getElementById("fservice"),
     message: document.getElementById("fmessage"),
   };
-  const honeypot = document.getElementById("website");
   const countEl = document.getElementById("fmessageCount");
   const submitBtn = document.getElementById("btnSubmit");
   const MSG_MAX = 1000;
@@ -24,13 +23,13 @@ document.addEventListener("DOMContentLoaded", function () {
      Keys match the `fields` map and the "f<key>Err" element ids.  */
   const validators = {
     name: function (v) {
-      v = v.trim();
+      v = v.trim().replace(/\s+/g, " ");
       if (!v) return "Please enter your name.";
       if (/\d/.test(v)) return "Name cannot contain numbers.";
       if (v.length < 3) return "Name must be at least 3 characters.";
       if (v.length > 50) return "Name is too long (50 characters max).";
-      // Letters with single separators (space, dot, apostrophe, hyphen) between words.
-      if (!/^[A-Za-z]+(?:[ .'-][A-Za-z]+)*$/.test(v)) {
+      // Letters (any language) with single separators between words.
+      if (!/^\p{L}+(?:[ .'-]\p{L}+)*$/u.test(v)) {
         return "Please enter a valid full name (letters only).";
       }
       return "";
@@ -49,10 +48,11 @@ document.addEventListener("DOMContentLoaded", function () {
       return "";
     },
     phone: function (v) {
-      v = v.trim();
-      if (!v) return "Please enter your mobile number.";
-      if (!/^\d+$/.test(v)) return "Phone number can only contain digits.";
-      if (!/^[6-9]\d{9}$/.test(v))
+      // Accept autofilled / pasted numbers with +91, spaces, dashes, etc.
+      let d = v.replace(/\D/g, "");
+      if (d.length > 10) d = d.slice(-10); // drop country code / leading 0
+      if (!d) return "Please enter your mobile number.";
+      if (!/^[6-9]\d{9}$/.test(d))
         return "Enter a valid 10-digit mobile number starting with 6-9.";
       return "";
     },
@@ -102,6 +102,13 @@ document.addEventListener("DOMContentLoaded", function () {
   function validateField(key) {
     const input = fields[key];
     if (!validators[key] || !input) return true;
+    // Normalize an autofilled/pasted phone to the 10-digit local number so what
+    // we validate — and submit — is clean (handles +91, spaces, dashes, etc.).
+    if (key === "phone") {
+      let d = input.value.replace(/\D/g, "");
+      if (d.length > 10) d = d.slice(-10);
+      if (d !== input.value) input.value = d;
+    }
     const msg = validators[key](input.value);
     if (msg) {
       showError(key, msg);
@@ -114,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
   /* ── Live: stop digits/symbols ever landing in the name field ── */
   if (fields.name) {
     fields.name.addEventListener("input", function () {
-      const cleaned = this.value.replace(/[^A-Za-z\s.'-]/g, "");
+      const cleaned = this.value.replace(/[^\p{L}\s.'-]/gu, "");
       if (cleaned !== this.value) {
         const drop = this.value.length - cleaned.length;
         const pos = Math.max(0, this.selectionStart - drop);
@@ -131,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function () {
   /* ── Live: allow only digits in the phone field (max 10) ── */
   if (fields.phone) {
     fields.phone.addEventListener("input", function () {
-      const cleaned = this.value.replace(/\D/g, "").slice(0, 10);
+      const cleaned = this.value.replace(/\D/g, "").slice(0, 15);
       if (cleaned !== this.value) {
         const drop = this.value.length - cleaned.length;
         const pos = Math.max(0, this.selectionStart - drop);
@@ -169,29 +176,22 @@ document.addEventListener("DOMContentLoaded", function () {
     updateCount();
   }
 
-  form.addEventListener("submit", function (e) {
-    // Honeypot: real users never fill this. If it has a value, it's a bot — block.
-    if (honeypot && honeypot.value.trim() !== "") {
-      e.preventDefault();
-      return;
-    }
+  form.addEventListener("submit", async function (e) {
+    // We always handle the submit ourselves so we control the redirect.
+    e.preventDefault();
 
-    // Run our own validation. If anything fails, stop the submit and focus it.
+    // Run our own validation. If anything fails, focus the first bad field.
     let firstInvalid = null;
     KEYS.forEach(function (key) {
       const ok = validateField(key);
       if (!ok && !firstInvalid) firstInvalid = fields[key];
     });
     if (firstInvalid) {
-      e.preventDefault();
       firstInvalid.focus();
       return;
     }
 
-    // All valid → let the browser submit the form natively to Formspree.
-    // Formspree emails the enquiry and redirects to the _next URL (thank-you page).
-    // We do NOT call preventDefault here, so the real submission goes through.
-    // Native submission also works when previewing the file locally — unlike fetch.
+    // GA4 conversion event (best effort)
     if (typeof gtag === "function") {
       gtag("event", "contact_form_submit", {
         event_category: "Lead Generation",
@@ -199,6 +199,37 @@ document.addEventListener("DOMContentLoaded", function () {
         value: 1,
       });
     }
-    if (submitBtn) submitBtn.textContent = "Sending…";
+
+    const label = submitBtn ? submitBtn.textContent : "";
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Sending…";
+    }
+
+    try {
+      // Send to Formspree in the background. The Accept header makes Formspree
+      // reply with JSON instead of redirecting to ITS page — so WE decide where
+      // the visitor goes next, and they always land on our thank-you page.
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+
+      if (!response.ok) {
+        throw new Error("Formspree responded " + response.status);
+      }
+
+      window.location.href = "thank-you.html";
+    } catch (err) {
+      console.error("Contact form submission failed:", err);
+      alert(
+        "Sorry, your message couldn't be sent. Note: the form only works on the live site or a local server — not when opening the file directly. Otherwise please email us at support@gjaca.in.",
+      );
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = label;
+      }
+    }
   });
 });

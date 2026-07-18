@@ -1,0 +1,261 @@
+/* ============================================================
+   RESPONSIVE.CSS — Gautam Jaiswal & Associates
+   Single source of truth for tablet + mobile responsiveness.
+   MUST be linked LAST (after global.css + the page stylesheet)
+   so these rules win where they overlap.
+
+   Breakpoints:
+     ≤ 1024px  large tablet / small laptop
+     ≤ 900px   tablet  (nav collapses to hamburger here)
+     ≤ 600px   mobile  (single column, centred text)
+     ≤ 380px   small phones
+   ============================================================ */
+
+/* ─────────────  LARGE TABLET  (≤ 1024px)  ───────────── */
+@media (max-width: 1024px) {
+  section {
+    padding: 4.5rem 5%;
+  }
+  .hero-grid {
+    gap: 2.5rem;
+  }
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ─────────────  TABLET  (≤ 900px)  ───────────── */
+@media (max-width: 900px) {
+  /* Collapse the top nav to the hamburger on tablets too */
+  .nav-links {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+
+  /* Two-column card grids */
+  .featured-grid,
+  .services-grid,
+  .resources-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Single-column stacked areas */
+  .hero-grid,
+  .about-grid,
+  .contact-grid,
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-right {
+    display: none;
+  }
+  /* Home hero: stop vertical-centering so content sits near the top */
+  .hero {
+    min-height: auto;
+    align-items: flex-start;
+  }
+  .about-card,
+  .form-wrap {
+    position: static;
+  }
+
+  /* Tighten the inner-page hero gap below the fixed nav */
+  .page-hero {
+    padding: 3rem 5% 3rem;
+  }
+
+  /* Process line hidden once it wraps */
+  .process-steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .process-steps::before {
+    display: none;
+  }
+
+  /* Footer two-up */
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+/* ─────────────  MOBILE  (≤ 600px)  ───────────── */
+@media (max-width: 600px) {
+  section {
+    padding: 3.25rem 6%;
+  }
+
+  /* Everything to a single, centred column */
+  .featured-grid,
+  .why-grid,
+  .services-grid,
+  .resources-grid,
+  .process-steps,
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* ── Home hero: centred text, tight top spacing ── */
+  .hero {
+    text-align: center;
+    padding: 2.5rem 6% 3.5rem;
+  }
+  .hero-tag,
+  .hero-sub {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-btns {
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero-btns .btn-gold,
+  .hero-btns .btn-ghost {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+  }
+  .hero-stats {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+  }
+  .hero-stat,
+  .hero-stat + .hero-stat {
+    padding: 0 1rem;
+    border-left: none;
+  }
+
+  /* ── Inner page hero: centred ── */
+  .page-hero {
+    text-align: center;
+    padding: 2.25rem 6% 2.75rem;
+  }
+  .page-hero p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ── Section intros: centred ── */
+  .section-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  .section-sub {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ── About: centred intro ── */
+  .about-body {
+    text-align: center;
+  }
+  .about-quote {
+    text-align: center;
+    border-left: none;
+    border-top: 3px solid var(--gold);
+    border-radius: 0 0 8px 8px;
+  }
+  .about-badges {
+    justify-content: center;
+  }
+
+  /* ── Contact: centred lead + socials ── */
+  .contact-lead {
+    text-align: center;
+  }
+  .contact-social {
+    justify-content: center;
+  }
+
+  /* ── Team cards: stack, centre, show the FULL photo (no crop) ── */
+  .team-card {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding-top: 1.75rem;
+  }
+  .team-photo-col {
+    width: 100%;
+    max-width: 260px;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 10px;
+  }
+  .team-photo {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    object-fit: contain;
+    border-radius: 10px;
+  }
+  .team-info {
+    align-items: center;
+  }
+  .team-badges,
+  .team-list {
+    justify-content: center;
+  }
+  .team-list {
+    align-items: center;
+  }
+  .team-list li {
+    justify-content: center;
+  }
+
+  /* ── Footer: centred single column ── */
+  .footer-grid {
+    text-align: center;
+    gap: 2.25rem;
+  }
+  .footer-grid .nav-brand {
+    justify-content: center;
+  }
+  .footer-brand-text {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .footer-social {
+    justify-content: center;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-disclaimer {
+    margin: 0 auto;
+  }
+
+  /* Trust bar centred */
+  .trust-inner {
+    justify-content: center;
+    gap: 1rem 1.5rem;
+  }
+
+  /* Thank-you page spacing */
+  .thank-you-section {
+    padding: 100px 18px 70px;
+  }
+  .thank-you-card {
+    padding: 40px 24px;
+  }
+}
+
+/* ─────────────  SMALL PHONES  (≤ 380px)  ───────────── */
+@media (max-width: 380px) {
+  .nav-brand-name {
+    font-size: 13px;
+  }
+  .nav-brand-sub {
+    font-size: 9px;
+  }
+  .hero-stats {
+    gap: 0.85rem;
+  }
+  .stat-num {
+    font-size: 22px;
+  }
+}
