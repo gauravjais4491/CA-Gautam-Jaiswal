@@ -59,7 +59,7 @@
                 style="margin-bottom: 0.25rem"
                 aria-label="GJA Home"
               >
-                <div class="nav-brand-icon">GJ</div>
+                <div class="nav-brand-icon">GJA</div>
                 <div>
                   <div class="nav-brand-name">Gautam Jaiswal &amp; Associates</div>
                   <span class="nav-brand-sub">
@@ -128,7 +128,7 @@
                 <strong>Registration</strong>
                 FRN: 163360W (ICAI)
                 <strong>Address</strong>
-                Office 118, 4th Floor, Sky Pav, Gujarwadi Phata, Katraj Nagar, Pune
+                Office 118, 4th Floor, Sky Pav, Gujarwadi Phata, Katraj, Pune
                 &ndash; 411046
                 <strong>Phone</strong>
                 <a href="tel:+917070716471">+91 70707 16471</a><br />
